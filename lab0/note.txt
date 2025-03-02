@@ -1,0 +1,2 @@
+check gcc version: aarch64-linux-gnu-gcc --version
+In Makefile, CFLAGS = -Wno -error
