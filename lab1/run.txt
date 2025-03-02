@@ -1,0 +1,16 @@
+make
+QEMU Emulator : qemu-system-aarch64 -M raspi3b -kernel kernel8.img -serial null -display none -serial stdio -s -S
+Debug on QEMU : qemu-system-aarch64 -M raspi3b -kernel kernel8.img -serial null -serial stdio -display none -S -s
+-M raspi3: Emulate a Raspberry Pi 3.
+-kernel kernel8.img: Load the kernel8.img file.
+-serial null -serial stdio: Redirect the serial output to the terminal.
+-serial null: 禁用第一個序列埠 (serial 0)，這可以避免一些不必要的輸出 (可能是 UART0)。
+-serial stdio: 讓第二個序列埠 (serial 1) 輸出到標準輸入/輸出 (stdin/stdout)，這樣你可以直接在終端機上與模擬的系統互動。
+
+qemu-system-aarch64 -M raspi3b -kernel kernel8.img -display none -d in_asm
+-display none：
+禁用顯示輸出，這樣 QEMU 不會開啟任何圖形介面 (GUI)。
+這在沒有視覺輸出的裸機開發 (bare-metal) 或純序列埠 (serial console) 運行的系統中特別有用。
+-d in_asm：
+啟用 QEMU 的 指令追蹤 (Instruction Tracing)，並顯示執行的 組合語言指令 (Assembly Instructions)。
+這樣你可以 查看 CPU 逐步執行的指令，用於分析內核行為、偵錯 (debugging)。
