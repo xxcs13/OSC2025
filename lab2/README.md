@@ -14,3 +14,9 @@ python3 upload.py                      // terminal 2
 ```   
 # Note
 There should be a `config.txt` inside the SD card.
+#  `config.txt`
+```
+kernel=bootloader.img
+arm_64bit=1
+initramfs initramfs.cpio
+```
